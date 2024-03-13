@@ -1,6 +1,6 @@
 ﻿namespace MOD4_1302223071
 {
-    internal class Program
+         class Program
     {
         public class KodeBuah
  
@@ -13,13 +13,93 @@
                 
 
             }
+            public class PosisiKarakterGame
+            {
+                public enum Posisi
+                {
+                    BERDIRI, JONGKOK, TERBANG, TENGKURAP
+                }
+                public enum Tombol
+                {
+                    TOMBOLS, TOMBOLW
+                }
+            }
             static void Main(string[] args)
             {
+                Console.Write("Enter Command:  ");
+                string command = Console.ReadLine();
+                PosisiKarakterGame.Tombol Tombol = PosisiKarakterGame.Tombol.TOMBOLS;
+                PosisiKarakterGame.Posisi Posisi = PosisiKarakterGame.Posisi.BERDIRI;
+                while (command != "Keluar")
+                {
+                    switch (Posisi)
+                    {
+                         case PosisiKarakterGame.Posisi.BERDIRI:
+                            if (command == "S")
+                            {
+                                Tombol = PosisiKarakterGame.Tombol.TOMBOLS;
+                                Posisi = PosisiKarakterGame.Posisi.JONGKOK;
+                                Console.WriteLine("Tombol Arah Bawah Ditekan");
+                            }
+                            else if (command == "W")
+                            {
+                                Tombol = PosisiKarakterGame.Tombol.TOMBOLW;
+                                Posisi = PosisiKarakterGame.Posisi.TERBANG;
+                                Console.WriteLine("Tombol Arah Atas Ditekan ");
+                            }
+                            break;
+                        case PosisiKarakterGame.Posisi.JONGKOK:
+                            if (command == "S")
+                            {
+                                Tombol = PosisiKarakterGame.Tombol.TOMBOLS;
+                                Posisi = PosisiKarakterGame.Posisi.TENGKURAP;
+                                Console.WriteLine("Tombol Arah Bawah Ditekan ");
+                            }
+                            else if (command == "W")
+                            {
+                                Tombol = PosisiKarakterGame.Tombol.TOMBOLW;
+                                Posisi = PosisiKarakterGame.Posisi.BERDIRI;
+                                Console.WriteLine("Tombol Arah Atas Ditekan ");
+                            }
+                            break;
+                        case PosisiKarakterGame.Posisi.TENGKURAP:
+                            if (command == "S")
+                            {
+                                Tombol = PosisiKarakterGame.Tombol.TOMBOLS;
+                                Posisi = PosisiKarakterGame.Posisi.TENGKURAP;
+                                Console.WriteLine("Tombol Arah Bawah Ditekan ");
+                            }
+                            else if (command == "W")
+                            {
+                                Tombol = PosisiKarakterGame.Tombol.TOMBOLW;
+                                Posisi = PosisiKarakterGame.Posisi.JONGKOK;
+                                Console.WriteLine("Tombol Arah Atas Ditekan");
+                            }
+                            break;
+                        case PosisiKarakterGame.Posisi.TERBANG:
+                            if (command == "S")
+                            {
+                                Tombol = PosisiKarakterGame.Tombol.TOMBOLS;
+                                Posisi = PosisiKarakterGame.Posisi.BERDIRI;
+                                Console.WriteLine("Tombol Arah Bawah Ditekan ");
+                            }
+                            else if (command == "W")
+                            {
+                                Tombol = PosisiKarakterGame.Tombol.TOMBOLW;
+                                Posisi = PosisiKarakterGame.Posisi.JONGKOK;
+                                Console.WriteLine("Tombol Arah Atas Ditekan ");
+                            }
+                            break;
+                    }
+
+                    Console.Write("Enter Command:  ");
+                    command = Console.ReadLine();
+                }
                 KodeBuah kodeBuahObj = new KodeBuah();
                 Console.WriteLine("Nama Buah\t\tKode Buah");
                 foreach(KodeBuah.namaBuah nama in Enum.GetValues(typeof(namaBuah))) { 
                     String kode1 = kodeBuahObj.getKodeBuah(nama);
-                    Console.WriteLine(nama + "\t\t" + kode1);
+                    Console.WriteLine(nama + "     \t\t" + kode1);
                 }
                 
             }
